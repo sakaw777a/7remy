@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>sakaw — sharp, tailored, deliberate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          black: '#0B0B0C',
+          navy: '#101A2C',
+          navylight: '#16233A',
+          charcoal: '#2A2A2D',
+          gold: '#C6A15B',
+          goldsoft: '#E4CE9A',
+          ivory: '#EDE8DF',
+          ivorydim: '#A8A29B',
+        },
+        fontFamily: {
+          display: ['"Cormorant Garamond"', 'serif'],
+          body: ['Inter', 'sans-serif'],
+          mono: ['"IBM Plex Mono"', 'monospace'],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background: #0B0B0C; }
+
+  .seam {
+    background-image: repeating-linear-gradient(to bottom, #C6A15B 0, #C6A15B 6px, transparent 6px, transparent 14px);
+    width: 1px;
+  }
+
+  .fabric-noise {
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(198,161,91,0.06) 0, transparent 40%),
+      radial-gradient(circle at 80% 60%, rgba(198,161,91,0.05) 0, transparent 45%);
+  }
+
+  .tag-eyebrow { letter-spacing: 0.28em; }
+
+  .swatch-blazer {
+    background: linear-gradient(160deg, #16233A 0%, #0F1A2B 55%, #0B0B0C 100%);
+  }
+  .swatch-turtleneck {
+    background: linear-gradient(160deg, #33333A 0%, #232326 60%, #17171A 100%);
+  }
+
+  .stitch-border { border: 1px dashed rgba(198,161,91,0.45); }
+
+  .card-hover {
+    transition: transform 0.5s cubic-bezier(.2,.8,.2,1), border-color 0.4s ease;
+  }
+  .card-hover:hover { transform: translateY(-6px); border-color: rgba(198,161,91,0.6); }
+
+  .chip { transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
+  .chip.active, .chip:hover { background: #C6A15B; color: #0B0B0C; border-color: #C6A15B; }
+
+  a:focus-visible, button:focus-visible { outline: 1px solid #E4CE9A; outline-offset: 3px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+
+  .reveal { opacity: 0; transform: translateY(18px); animation: rise 0.9s ease forwards; }
+  @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+  .d1{animation-delay:.05s}.d2{animation-delay:.18s}.d3{animation-delay:.3s}.d4{animation-delay:.42s}
+</style>
+</head>
+<body class="bg-black text-ivory font-body antialiased">
+
+  <!-- NAV -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
+      <a href="#" class="font-display text-2xl md:text-3xl tracking-[0.35em] text-ivory">sakaw</a>
+      <nav class="hidden md:flex items-center gap-10 font-mono text-[11px] tag-eyebrow uppercase text-ivorydim">
+        <a href="#home" class="hover:text-gold transition-colors">Home</a>
+        <a href="#quiz" class="hover:text-gold transition-colors">Style Quiz</a>
+        <a href="#lookbook" class="hover:text-gold transition-colors">Lookbook</a>
+        <a href="#planner" class="hover:text-gold transition-colors">Outfit Planner</a>
+      </nav>
+      <button class="md:hidden text-ivory" aria-label="Open menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="relative fabric-noise pt-40 pb-28 md:pt-52 md:pb-36 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 grid md:grid-cols-2 gap-16 items-center">
+      <div class="reveal d1">
+        <p class="font-mono text-[11px] tag-eyebrow uppercase text-gold mb-6">Sharp. Corporate. Elegant.</p>
+        <h1 class="font-display font-medium text-5xl md:text-6xl lg:text-7xl leading-[1.05] text-ivory">
+          Dress like<br>the room<br><span class="italic text-goldsoft">already trusts you.</span>
+        </h1>
+        <p class="mt-8 text-ivorydim text-base md:text-lg leading-relaxed max-w-md font-light">
+          Sakaw builds your outfits the way a tailor builds a jacket — one deliberate decision at a time. Business meetings, university, gym, or a quiet dinner: know exactly what to wear before you open the closet.
+        </p>
+        <div class="mt-10 flex flex-wrap items-center gap-4">
+          <a href="#quiz" class="px-8 py-4 bg-gold text-black font-mono text-xs tag-eyebrow uppercase hover:bg-goldsoft transition-colors">Take the Style Quiz</a>
+          <a href="#lookbook" class="px-8 py-4 border border-ivorydim/40 text-ivory font-mono text-xs tag-eyebrow uppercase hover:border-gold hover:text-gold transition-colors">Explore the Lookbook</a>
+        </div>
+      </div>
+
+      <!-- Layered swatch visual: signature pairing -->
+      <div class="reveal d2 relative h-[420px] md:h-[480px] flex items-center justify-center">
+        <div class="absolute right-4 top-6 w-52 md:w-64 h-72 md:h-80 swatch-turtleneck stitch-border rounded-sm"></div>
+        <div class="absolute left-2 md:left-6 bottom-4 w-56 md:w-72 h-80 md:h-96 swatch-blazer stitch-border rounded-sm shadow-2xl shadow-black flex flex-col justify-end p-6">
+          <p class="font-mono text-[10px] tag-eyebrow uppercase text-gold">Pairing 04 / Boardroom</p>
+          <p class="font-display text-2xl text-ivory mt-2">Navy Blazer<br>+ Charcoal Turtleneck</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEAM DIVIDER -->
+  <div class="max-w-7xl mx-auto px-6 md:px-10">
+    <div class="flex items-center gap-4 py-2">
+      <span class="seam h-10"></span>
+      <span class="font-mono text-[10px] tag-eyebrow uppercase text-ivorydim">Silhouette established</span>
+    </div>
+  </div>
+
+  <!-- THE SAKAW EDIT — Outfit pairings -->
+  <section id="quiz" class="py-24 md:py-32 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+        <div>
+          <p class="font-mono text-[11px] tag-eyebrow uppercase text-gold mb-4">The Sakaw Edit</p>
+          <h2 class="font-display text-4xl md:text-5xl text-ivory">Pre-styled, not pre-packaged.</h2>
+        </div>
+        <p class="text-ivorydim font-light max-w-sm">Every pairing is built around one rule: contrast in texture, restraint in color. Pick an occasion, wear the outcome.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="card-hover border border-white/10 p-8 bg-navylight/30">
+          <div class="h-56 swatch-blazer stitch-border rounded-sm mb-6"></div>
+          <p class="font-mono text-[10px] tag-eyebrow uppercase text-gold">Business Meeting</p>
+          <h3 class="font-display text-2xl mt-2 text-ivory">Navy Blazer, White Oxford, Charcoal Trouser</h3>
+          <p class="text-ivorydim text-sm mt-3 font-light">Unstructured shoulder, no tie — authority without stiffness.</p>
+        </div>
+        <div class="card-hover border border-white/10 p-8 bg-navylight/30">
+          <div class="h-56 swatch-turtleneck stitch-border rounded-sm mb-6"></div>
+          <p class="font-mono text-[10px] tag-eyebrow uppercase text-gold">University</p>
+          <h3 class="font-display text-2xl mt-2 text-ivory">Charcoal Turtleneck, Wool Overcoat, Loafers</h3>
+          <p class="text-ivorydim text-sm mt-3 font-light">Minimal layers, maximum ease of motion between lectures.</p>
+        </div>
+        <div class="card-hover border border-white/10 p-8 bg-navylight/30">
+          <div class="h-56 rounded-sm mb-6" style="background:linear-gradient(160deg,#1c1c1e,#0B0B0C)"></div>
+          <p class="font-mono text-[10px] tag-eyebrow uppercase text-gold">Casual Night Out</p>
+          <h3 class="font-display text-2xl mt-2 text-ivory">Matte Black Shirt, Tailored Denim, Suede Boot</h3>
+          <p class="text-ivorydim text-sm mt-3 font-light">Sharp enough for the door, relaxed enough for the table.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-7xl mx-auto px-6 md:px-10">
+    <div class="flex items-center gap-4 py-2">
+      <span class="seam h-10"></span>
+      <span class="font-mono text-[10px] tag-eyebrow uppercase text-ivorydim">Pairings fixed</span>
+    </div>
+  </div>
+
+  <!-- STYLE & EVENT GUIDE -->
+  <section id="planner" class="py-24 md:py-32 border-t border-white/5 fabric-noise">
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
+      <p class="font-mono text-[11px] tag-eyebrow uppercase text-gold mb-4">Styling &amp; Event Guide</p>
+      <h2 class="font-display text-4xl md:text-5xl text-ivory mb-14 max-w-2xl">Tell us where you're going. We'll tell you what to wear.</h2>
+
+      <div class="grid md:grid-cols-2 gap-12 items-start">
+        <div>
+          <p class="font-mono text-xs text-ivorydim uppercase tag-eyebrow mb-4">Occasion</p>
+          <div class="flex flex-wrap gap-3 mb-10">
+            <button class="chip active px-5 py-2.5 border border-gold text-xs font-mono uppercase tag-eyebrow">Business Meeting</button>
+            <button class="chip px-5 py-2.5 border border-ivorydim/30 text-ivorydim text-xs font-mono uppercase tag-eyebrow">University</button>
+            <button class="chip px-5 py-2.5 border border-ivorydim/30 text-ivorydim text-xs font-mono uppercase tag-eyebrow">Gym</button>
+            <button class="chip px-5 py-2.5 border border-ivorydim/30 text-ivorydim text-xs font-mono uppercase tag-eyebrow">Casual Night Out</button>
+          </div>
+          <p class="font-mono text-xs text-ivorydim uppercase tag-eyebrow mb-4">Weather</p>
+          <div class="flex flex-wrap gap-3">
+            <button class="chip active px-5 py-2.5 border border-gold text-xs font-mono uppercase tag-eyebrow">18°C · Cool</button>
+            <button class="chip px-5 py-2.5 border border-ivorydim/30 text-ivorydim text-xs font-mono uppercase tag-eyebrow">27°C · Warm</button>
+            <button class="chip px-5 py-2.5 border border-ivorydim/30 text-ivorydim text-xs font-mono uppercase tag-eyebrow">Rain</button>
+          </div>
+        </div>
+
+        <div class="border border-white/10 bg-navylight/30 p-8 md:p-10">
+          <p class="font-mono text-[10px] tag-eyebrow uppercase text-gold mb-3">Recommended</p>
+          <h3 class="font-display text-3xl text-ivory mb-4">Charcoal Wool Blazer, Navy Turtleneck, Tailored Trouser</h3>
+          <p class="text-ivorydim text-sm font-light leading-relaxed mb-6">Cool weather calls for wool over cotton. The turtleneck replaces a tie without losing formality — appropriate for a boardroom, comfortable through a long day.</p>
+          <a href="#lookbook" class="inline-block font-mono text-xs tag-eyebrow uppercase text-gold border-b border-gold pb-1 hover:text-goldsoft hover:border-goldsoft transition-colors">See full outfit &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-7xl mx-auto px-6 md:px-10">
+    <div class="flex items-center gap-4 py-2">
+      <span class="seam h-10"></span>
+      <span class="font-mono text-[10px] tag-eyebrow uppercase text-ivorydim">Guide calibrated</span>
+    </div>
+  </div>
+
+  <!-- LOOKBOOK -->
+  <section id="lookbook" class="py-24 md:py-32 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
+      <p class="font-mono text-[11px] tag-eyebrow uppercase text-gold mb-4">Lookbook</p>
+      <h2 class="font-display text-4xl md:text-5xl text-ivory mb-14 max-w-2xl">A study in restraint.</h2>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        <div class="col-span-2 row-span-2 h-full min-h-[340px] swatch-blazer stitch-border rounded-sm flex items-end p-6">
+          <p class="font-display text-xl text-ivory">The Boardroom Line</p>
+        </div>
+        <div class="h-40 md:h-56 swatch-turtleneck rounded-sm"></div>
+        <div class="h-40 md:h-56 rounded-sm" style="background:linear-gradient(160deg,#1c1c1e,#0B0B0C)"></div>
+        <div class="h-40 md:h-56 rounded-sm" style="background:linear-gradient(160deg,#16233A,#0B0B0C)"></div>
+        <div class="h-40 md:h-56 swatch-blazer rounded-sm"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE BAND -->
+  <section class="py-28 md:py-36 border-t border-white/5 bg-navy/40 text-center">
+    <div class="max-w-3xl mx-auto px-6">
+      <p class="font-display italic text-3xl md:text-4xl text-goldsoft leading-relaxed">
+        "Style isn't the loudest thing in the room. It's the reason no one questions you."
+      </p>
+      <p class="font-mono text-[11px] tag-eyebrow uppercase text-ivorydim mt-8">— The Sakaw Philosophy</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/5 py-16">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 flex flex-col md:flex-row justify-between gap-10">
+      <div>
+        <a href="#" class="font-display text-2xl tracking-[0.35em] text-ivory">sakaw</a>
+        <p class="text-ivorydim text-sm font-light mt-4 max-w-xs">Sharp, corporate, elegant. Built for men who dress with intention.</p>
+      </div>
+      <div class="flex gap-16">
+        <div>
+          <p class="font-mono text-[10px] tag-eyebrow uppercase text-gold mb-4">Navigate</p>
+          <ul class="space-y-2 text-sm text-ivorydim font-light">
+            <li><a href="#home" class="hover:text-gold transition-colors">Home</a></li>
+            <li><a href="#quiz" class="hover:text-gold transition-colors">Style Quiz</a></li>
+            <li><a href="#lookbook" class="hover:text-gold transition-colors">Lookbook</a></li>
+            <li><a href="#planner" class="hover:text-gold transition-colors">Outfit Planner</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-mono text-[10px] tag-eyebrow uppercase text-gold mb-4">Join the well-dressed</p>
+          <form class="flex border-b border-ivorydim/30 max-w-[220px]" onsubmit="return false;">
+            <input type="email" placeholder="Email address" class="bg-transparent text-sm py-2 flex-1 outline-none placeholder:text-ivorydim/60 font-light">
+            <button type="submit" class="text-gold text-sm px-2">&rarr;</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <p class="text-center text-ivorydim/50 text-xs font-mono mt-16">&copy; 2026 Sakaw. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
